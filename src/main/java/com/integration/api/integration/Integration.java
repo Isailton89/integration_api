@@ -3,7 +3,6 @@ package com.integration.api.integration;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Table(name = "integrations")
 @Entity(name = "Integration")
 @Getter
 @NoArgsConstructor
