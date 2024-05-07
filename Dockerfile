@@ -6,7 +6,7 @@ RUN apt-get install openjdk-17-jdk -y
 
 RUN apt-get install maven -y
 
-WORKDIR pom.xml
+WORKDIR /
 
 RUN mvn clean install -f pom.xml
 
