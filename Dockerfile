@@ -1,11 +1,15 @@
-FROM maven:3.8.5-openjdk-17 AS build
-COPY . .
-RUN mvn clean package -DskipTests
+FROM ubuntu:latest AS build
 
-FROM openjdk:17.0.1-jdk-slim
+RUN apt-get update
+
+RUN apt-get install openjdk-17-jdk -y
+
+RUN apt-get install maven -y
+
+RUN mvn clean install
+
+FROM openjdk:17-jdk-slim
 
 COPY --from=build /target/api-0.0.1-SNAPSHOT.jar app.jar
 
-EXPOSE 8080
-
-ENTRYPOINT ["java","-jar","demo.jar"]
+ENTRYPOINT [ "java", "-jar", "app.jar" ]
