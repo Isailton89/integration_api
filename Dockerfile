@@ -6,7 +6,9 @@ RUN apt-get install openjdk-17-jdk -y
 
 RUN apt-get install maven -y
 
-RUN mvn clean install
+WORKDIR pom.xml
+
+RUN mvn clean install -f pom.xml
 
 FROM openjdk:17-jdk-slim
 
