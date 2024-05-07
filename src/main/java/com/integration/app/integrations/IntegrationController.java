@@ -1,6 +1,7 @@
 package com.integration.app.integrations;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class IntegrationController {
     }
 
     @PostMapping("/add-integration")
+    @Transactional
     public Integration create(@RequestBody Integration integration) {
         return this.repository.save(integration);
     }
