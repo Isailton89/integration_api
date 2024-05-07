@@ -3,11 +3,10 @@ package com.integration.api.integration;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Entity(name = "Integration")
-@Getter
+@Entity(name = "integration")
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
 public class Integration {
     @Id
     private String id;
@@ -18,21 +17,4 @@ public class Integration {
     private String error;
     private String responsible;
     private boolean isIntegrated;
-
-    public Integration(RecordDataIntegration data) {
-        this.id = data.id();
-        this.dateRegister = data.dateRegister();
-        this.contact = data.contact();
-        this.status = data.status();
-        this.halfFinisher = data.halfFinisher();
-        this.error = data.error();
-        this.responsible = data.responsible();
-    }
-
-    public void updateData(UpdateDataIntegration data) {
-        if (data.responsible() != null) {
-            this.responsible = data.responsible();
-        }
-        this.isIntegrated = data.isIntegrated();
-    }
 }
