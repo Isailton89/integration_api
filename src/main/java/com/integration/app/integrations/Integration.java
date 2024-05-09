@@ -20,5 +20,10 @@ public class Integration {
     private String error;
     private String responsible;
     private boolean isIntegrated;
+    private String priority;
 
+    public void updateIntegration(IntegrationUpdateData data) {
+        this.isIntegrated = data.isIntegrated();
+        this.responsible = data.responsible();
+    }
 }

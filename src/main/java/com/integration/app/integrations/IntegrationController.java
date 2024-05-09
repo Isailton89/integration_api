@@ -19,7 +19,20 @@ public class IntegrationController {
 
     @PostMapping("/add-integration")
     @Transactional
-    public Integration create(@RequestBody Integration integration) {
-        return this.repository.save(integration);
+    public List<Integration> create(@RequestBody List<Integration> integrations) {
+        return this.repository.saveAll(integrations);
+    }
+
+    @PutMapping("/update-integration")
+    @Transactional
+    public void updateCard(@RequestBody IntegrationUpdateData data) {
+        var integration = repository.getReferenceById(data.id());
+        integration.updateIntegration(data);
+    }
+
+    @DeleteMapping("/delete-integration/{id}")
+    @Transactional
+    public void delete(@PathVariable String id) {
+        repository.deleteById(id);
     }
 }
