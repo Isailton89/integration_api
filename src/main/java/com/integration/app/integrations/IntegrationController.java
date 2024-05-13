@@ -20,6 +20,11 @@ public class IntegrationController {
         return this.repository.findAll();
     }
 
+    @GetMapping("/list-integration")
+    public List<Integration> listPriority(@RequestParam("priority") String priority) {
+        return repository.findByPriority(priority);
+    }
+
     @PostMapping("/add-integration")
     @Transactional
     public List<Integration> create(@RequestBody List<Integration> integrations) {
