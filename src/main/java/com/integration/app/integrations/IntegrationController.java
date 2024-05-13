@@ -20,7 +20,7 @@ public class IntegrationController {
         return this.repository.findAll();
     }
 
-    @GetMapping("/list-integration")
+    @GetMapping("/list-integration-filter")
     public List<Integration> listPriority(@RequestParam("priority") String priority) {
         return repository.findByPriority(priority);
     }
