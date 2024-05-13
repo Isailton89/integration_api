@@ -20,11 +20,6 @@ public class IntegrationController {
         return this.repository.findAll();
     }
 
-    @GetMapping("/list-integration-page")
-    public Page<DataListIntegration> listPage(@PageableDefault(size = 20)Pageable pageable){
-        return repository.findAll(pageable).map(DataListIntegration::new);
-    }
-
     @PostMapping("/add-integration")
     @Transactional
     public List<Integration> create(@RequestBody List<Integration> integrations) {
