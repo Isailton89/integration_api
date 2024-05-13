@@ -1,6 +1,9 @@
 package com.integration.app.integrations;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +18,11 @@ public class IntegrationController {
     @GetMapping("/list-integration")
     public List<Integration> list() {
         return this.repository.findAll();
+    }
+
+    @GetMapping("/list-integration-page")
+    public Page<DataListIntegration> listPage(@PageableDefault(size = 20)Pageable pageable){
+        return repository.findAll(pageable).map(DataListIntegration::new);
     }
 
     @PostMapping("/add-integration")
