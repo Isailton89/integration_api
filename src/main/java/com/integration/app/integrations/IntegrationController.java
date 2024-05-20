@@ -21,8 +21,8 @@ public class IntegrationController {
     }
 
     @GetMapping("/list-integration-filter")
-    public List<Integration> listPriority(@RequestParam("priority") String priority) {
-        return repository.findByPriority(priority);
+    public Page<IntegrationList> listPriority(@RequestParam("priority") String priority, @PageableDefault(size = 5) Pageable pageable) {
+        return repository.findByPriority(priority, pageable);
     }
 
     @PostMapping("/add-integration")
