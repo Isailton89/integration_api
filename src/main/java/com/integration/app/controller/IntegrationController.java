@@ -1,5 +1,9 @@
-package com.integration.app.integrations;
+package com.integration.app.controller;
 
+import com.integration.app.integrations.Integration;
+import com.integration.app.integrations.IntegrationList;
+import com.integration.app.integrations.IntegrationRepository;
+import com.integration.app.integrations.IntegrationUpdateData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
